@@ -9,6 +9,9 @@ whT = 320   # WIDTH/ HEIGHT OF THE TARGET IMAGE    # 320 per default sett, # 128
 confThreshold = 0.5 # if the confidence of each object found is grater than 0.5 then i want to see the object
 nmsThreshold = 0.3
 
+xres = 2580
+yres = 2048
+
 x = 0
 y = 0
 w = 0
@@ -148,7 +151,7 @@ while go:
     ycenter = y+h/2
     print(x)
 
-    if xcenter < 540:
+    if xcenter < xres/2 - 100:
         print("gira a destra")
         enablel = 1
         if enabler == 1:
@@ -156,7 +159,7 @@ while go:
             time.sleep(0.005)
         if dc1 == 9:
             enabler = 0
-    elif xcenter > 1280 - 540:
+    elif xcenter > xres/2 + 100:
         print("gira a sinistra")
         enabler = 1
         if enablel == 1:
