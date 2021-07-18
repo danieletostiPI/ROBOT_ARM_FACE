@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import time
 import RPi.GPIO as GP
-
+##############################################
 # while loop to get the frames from the camera
 cap = cv2.VideoCapture(0)
 whT = 320   # WIDTH/ HEIGHT OF THE TARGET IMAGE    # 320 per default sett, # 1280x720 width per mac , # 2580x2048 per camera raspberry
