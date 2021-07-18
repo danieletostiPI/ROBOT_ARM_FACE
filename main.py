@@ -103,7 +103,7 @@ def findObject(outputs, img, objects = []):#, className = []):  ## devi capire c
         box = bbox[i]
         x, y, w, h = box[0], box[1], box[2], box[3]
         cv2.rectangle(img, (x,y), (x+w, y+h), (0, 0, 255), 2)
-        cv2.putText(img,f'{classNames[classIds[i]].upper()}', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+        #cv2.putText(img,f'{classNames[classIds[i]].upper()}', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
     #print(len(bbox))
     return x, y, w, h
 #----------------------------------------------------------------------------------------------
