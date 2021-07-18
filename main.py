@@ -57,16 +57,22 @@ DutyCycle1 = 27
 dc1 = float(DutyCycle1)
 
 
-def rotate_right(dc1):
-    dc1 = dc1 - 1
+def rotate_right(dc1, inc):
+    if dc1 <= 9:
+        dc1 = 9
+    else:
+        dc1 = dc1 - inc
     servo_rot.ChangeDutyCycle(dc1 / 4)
     time.sleep(0.02)
     servo_rot.ChangeDutyCycle(0)
     return dc1
 
 
-def rotate_left(dc1):
-    dc1 = dc1 + 1
+def rotate_left(dc1, inc):
+    if dc1 >= 42:
+        dc1 = 42
+    else:
+        dc1 = dc1 + inc
     servo_rot.ChangeDutyCycle(dc1 / 4)
     time.sleep(0.02)
     servo_rot.ChangeDutyCycle(0)
@@ -112,6 +118,7 @@ right = True
 left = True
 stop = True
 
+inc = 1
 enabler = 1
 enablel = 1
 
@@ -149,23 +156,42 @@ while go:
     h = h1
     xcenter = x+w/2
     ycenter = y+h/2
-    print(x)
+    #print(x)
 
-    if xcenter < xres/2 - 100:
-        print("gira a destra")
+    if xcenter < xres/2 - 150:
+        #print("gira a destra")
         enablel = 1
         if enabler == 1:
-            dc1 = rotate_right(dc1)
-            time.sleep(0.005)
-        if dc1 == 9:
+            if xcenter < xres/2 - 900:
+                inc = 6
+            elif xcenter < xres/2 - 600:
+                inc = 4
+            elif xcenter < xres/2 - 300:
+                inc = 2
+            else:
+                inc = 1
+            dc1 = rotate_right(dc1, inc)
+            time.sleep(inc*0.005)
+            print("Increase right %d",inc)
+        if dc1 <= 9:
             enabler = 0
-    elif xcenter > xres/2 + 100:
-        print("gira a sinistra")
+
+    elif xcenter > xres/2 + 150:
+        #print("gira a sinistra")
         enabler = 1
         if enablel == 1:
-            dc1 = rotate_left(dc1)
-            time.sleep(0.005)
-        if dc1 == 42:
+            if xcenter > xres/2 + 900:
+                inc = 6
+            elif xcenter > xres/2 + 600:
+                inc = 4
+            elif xcenter > xres/2 + 300:
+                inc = 2
+            else:
+                inc = 1
+            dc1 = rotate_left(dc1,inc)
+            time.sleep(inc*0.005)
+            print("Increase left %d",inc)
+        if dc1 >= 42:
             enablel = 0
     #else:
         #print("continua diritto")
