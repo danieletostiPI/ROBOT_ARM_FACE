@@ -20,13 +20,13 @@ h = 0
 area_old = 0
 #object list
 
-classesFiles = 'coco.names'     # extract names from coco.names file
+classesFiles = "coco.names"     # extract names from coco.names file
 classNames = []
 with open(classesFiles, 'rt') as f:
     classNames = f.read().rstrip('\n').split('\n')      # save all the class names in "classNames"
 
-modelConfiguration = 'yolov3-320.cfg'
-modelWeights = 'yolov3.weights'
+modelConfiguration = "yolov3-320.cfg"
+modelWeights = "yolov3.weights"
 
 # Create network
 
