@@ -118,6 +118,7 @@ right = True
 left = True
 stop = True
 
+spin = 0
 inc = 1
 enabler = 1
 enablel = 1
@@ -157,8 +158,14 @@ while go:
     xcenter = x+w/2
     ycenter = y+h/2
     #print(x)
+    if xcenter == 0 and ycenter == 0:
+        print("Spin")
+        spin = 1
+    if xcenter != 0 and ycenter != 0 and spin == 1:
+        print("Stop motor and continue")
+        spin = 0
 
-    if xcenter < xres/2 - 150:
+    if xcenter < xres/2 - 150 and spin == 0:
         #print("gira a destra")
         enablel = 1
         if enabler == 1:
@@ -176,7 +183,7 @@ while go:
         if dc1 <= 9:
             enabler = 0
 
-    elif xcenter > xres/2 + 150:
+    elif xcenter > xres/2 + 150 and spin == 0:
         #print("gira a sinistra")
         enabler = 1
         if enablel == 1:
