@@ -26,7 +26,7 @@ with open(classesFiles, 'rt') as f:
     classNames = f.read().rstrip('\n').split('\n')      # save all the class names in "classNames"
 
 modelConfiguration = '/home/danieletostiPI/ROBOT_ARM_FACE/yolov3-320.cfg'
-modelWeights = '/home/danieletostiPI/ROBOT_ARM_FACE/yolov3.weights'
+modelWeights = '/home/danieletostiPI/ROBOT_ARM_FACE/yolov3.weights.1'
 
 # Create network
 
